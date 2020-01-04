@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import {Icon} from 'native-base';
-import {Actions} from 'react-native-router-flux';
+//import {Actions} from 'react-native-router-flux';
 
 
 export default class SignIn extends Component {

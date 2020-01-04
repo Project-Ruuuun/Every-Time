@@ -12,7 +12,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 //import { TextInput } from 'react-native-gesture-handler';
 //
 ///import Routing Page
-import { Router,Scene} from 'react-native-router-flux'
+///import { Router,Scene} from 'react-native-router-flux'
 import SignIn from './SignIn';
 ///routing ver 2
 import {Navigation} from 'react-native-navigation';
@@ -51,7 +51,7 @@ export default class LandingPage extends Component {
     };
 
     SignInSuccess = () => {
-        this.props.navigation.navigate('LgMain');
+        this.props.navigation.navigate('Main');
     };
 
     ///////////
