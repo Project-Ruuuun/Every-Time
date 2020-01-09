@@ -37,13 +37,6 @@ const TabNavigator = createBottomTabNavigator({
         <Icon name='ios-home' style={{color:tintColor}}/>
     }
   },
-  시간표: {
-    screen:DummyScreen,
-    navigationOptions:{
-      tabBarIcon:({focused, tintColor})=>
-        <Icon name='ios-calendar' style={{color:tintColor}}/>
-    }
-  },
   알림: {
     screen:DummyScreen,
     navigationOptions:{
