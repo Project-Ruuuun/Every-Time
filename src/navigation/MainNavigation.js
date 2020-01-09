@@ -1,11 +1,10 @@
 import React from 'react';
 
-import {createAppContainer,createSwitchNavigator} from 'react-navigation'
-import {createStackNavigator } from 'react-navigation-stack'
+import { createAppContainer, createSwitchNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
 
 
 import TabNavigation from '../navigation/TabNavigation'
-
 import LandingPage from '../screens/LandingPage'
 import SignIn from '../screens/SignIn'
 
@@ -39,7 +38,7 @@ const AuthStack = createStackNavigator({
     screen: LandingPage,
     navigationOptions: {
       // title: 'Login',
-      header: null
+      headerShown: false
     }
   }
 },
