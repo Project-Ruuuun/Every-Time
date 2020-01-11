@@ -8,7 +8,6 @@ import BoardTabInfo from '../Tab/BoardInfo'
 import BoardTabAD from '../Tab/BoardAD'
 import BoardTabGroup from '../Tab/BoardGroup'
 
-
 const BoardTabNavigator = createMaterialTopTabNavigator({
   전체: {
     screen: BoardTabTotal,

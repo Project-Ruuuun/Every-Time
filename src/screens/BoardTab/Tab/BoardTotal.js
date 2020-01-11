@@ -49,6 +49,7 @@ class BoardTotalTab_first_Area extends Component {
         )
     }
 }
+
  
 export default class BoardTabTotal extends Component {
     render() {
