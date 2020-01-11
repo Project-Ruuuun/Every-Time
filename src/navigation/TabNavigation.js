@@ -4,6 +4,7 @@ import { Text, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import HomeTab from '../screens/HomeTab'
+import BoardTab from '../screens/BoardTab'
 
 class DummyScreen extends React.Component {
   render() {
@@ -24,7 +25,7 @@ const TabNavigator = createBottomTabNavigator({
     }
   },
   게시판: {
-    screen:DummyScreen,
+    screen:BoardTab,
     navigationOptions:{
       tabBarIcon:({focused, tintColor})=>
         <Icon name='ios-create' style={{color:tintColor}}/>
