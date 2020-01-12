@@ -54,7 +54,6 @@ class HomeTabTitle extends React.Component {
     )
   }
 }
-
 let images = [
   "https://cdn.pixabay.com/photo/2018/11/29/21/19/hamburg-3846525__480.jpg",
   "https://cdn.pixabay.com/photo/2018/11/11/16/51/ibis-3809147__480.jpg",
@@ -101,6 +100,30 @@ class HomeTabContentOne extends React.Component {
     )
   }
 }
+
+class HomeTabContentTwo extends React.Component {
+  ButtonRepeater = function(){
+    let buttons=[]
+    for (let i=0; i<7; i++){
+        buttons.push(
+        <Button transparent style={{flexDirection:'column', width:width/6, height:height/10}}>
+          <Icon type="FontAwesome" name="home" style={{fontSize:40}}/>
+          <Text style={{fontSize:15, color:'grey'}}>학교</Text>
+          <Text style={{fontSize:15, color:'grey'}}>홈</Text>          
+        </Button>)
+    }
+    return buttons
+  }
+
+  render(){
+    return(
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{flexDirection:'row', paddingTop:height/40}} >
+        {this.ButtonRepeater()}
+      </ScrollView>
+    )
+  }
+}
+
 export default class HomeTabPresenter extends React.Component{
   render(){
     return(
@@ -111,6 +134,8 @@ export default class HomeTabPresenter extends React.Component{
           
           <HomeTabContentOne/>
 
+          <HomeTabContentTwo/>
+        
         </Content>
       </Container>
     );
