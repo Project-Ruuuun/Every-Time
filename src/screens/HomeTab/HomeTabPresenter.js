@@ -135,7 +135,7 @@ class HomeTabContentThree extends React.Component {
   ))
 
   render(){
-    const semple=[
+    const sempleOne=[
       {
         category: "서울캠 자유게시판",
         title: "오랜만에 실로암 영상 보니까 웃기네 웃기네"
@@ -157,11 +157,11 @@ class HomeTabContentThree extends React.Component {
       <SafeAreaView style={{paddingHorizontal:10}}>
 
         <View style={{flexDirection:"row", marginBottom:15, alignItems:"center"}}>
-          <Text style={{fontWeight:"bold", fontSize:20}}>즐겨찾는 게시판</Text>
+          <Text style={{fontWeight:"bold", fontSize:18}}>즐겨찾는 게시판</Text>
           <Text style={{marginLeft:"auto", fontWeight:"500", color:"red"}}>더 보기</Text>
         </View>
         
-        { this.SampleCardItem(semple) } 
+        { this.SampleCardItem(sempleOne) } 
 
       </SafeAreaView>
     )
@@ -171,7 +171,12 @@ class HomeTabContentThree extends React.Component {
 class HomeTabContentFour extends React.Component {
   render(){
     return (
-      <></>
+      <SafeAreaView style={{paddingHorizontal:10}}>
+
+        <View style={{flexDirection:"row", marginBottom:15, alignItems:"center"}}>
+          <Text style={{fontWeight:"bold", fontSize:18}}>실시간 인기 글</Text>
+        </View>
+      </SafeAreaView>
     );
   }  
 }
@@ -191,6 +196,9 @@ export default class HomeTabPresenter extends React.Component{
           <View style={styles.Card}>
             <HomeTabContentThree/>
           </View>
+          <View style={styles.Card}>
+            <HomeTabContentFour/>
+          </View>
         </Content>
       </Container>
     );
@@ -208,7 +216,8 @@ const styles = StyleSheet.create({
     borderColor: '#bdc3c7',
     borderWidth: 1,
     paddingVertical:15,
-    paddingHorizontal:10
+    paddingHorizontal:10,
+    marginVertical:5
   }
 });
 
