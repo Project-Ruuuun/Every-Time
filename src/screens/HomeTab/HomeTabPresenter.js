@@ -124,6 +124,25 @@ class HomeTabContentTwo extends React.Component {
   }
 }
 
+class HomeTabContentThree extends React.Component {
+  render(){
+    return(
+      <SafeAreaView>
+        <View style={{flexDirection:"row", marginBottom:15}}>
+          <Text>즐겨찾는 게시판</Text>
+          <Text style={{marginLeft:"auto"}}>더보기</Text>
+        </View>
+        
+        <View>
+          <Text>Category</Text>
+          <Text>Title</Text>
+          <Icon></Icon>
+        </View>
+      </SafeAreaView>
+    )
+  }
+}
+
 export default class HomeTabPresenter extends React.Component{
   render(){
     return(
@@ -135,6 +154,10 @@ export default class HomeTabPresenter extends React.Component{
           <HomeTabContentOne/>
 
           <HomeTabContentTwo/>
+
+          <View style={styles.Card}>
+            <HomeTabContentThree/>
+          </View>
         
         </Content>
       </Container>
