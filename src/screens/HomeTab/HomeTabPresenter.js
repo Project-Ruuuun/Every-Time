@@ -68,7 +68,7 @@ let images = [
   "https://cdn.pixabay.com/photo/2018/12/15/02/53/flower-3876195__480.jpg",
   "https://cdn.pixabay.com/photo/2018/12/16/18/12/open-fire-3879031__480.jpg",
   "https://cdn.pixabay.com/photo/2018/11/24/02/05/lichterkette-3834926__480.jpg",
-"https://cdn.pixabay.com/photo/2018/11/29/19/29/autumn-3846345__480.jpg"
+  "https://cdn.pixabay.com/photo/2018/11/29/19/29/autumn-3846345__480.jpg"
 ]
 
 function Item({ title }) {
@@ -125,22 +125,55 @@ class HomeTabContentTwo extends React.Component {
 }
 
 class HomeTabContentThree extends React.Component {
+  
+  SampleCardItem = data => data.map(({category, title})=>(
+    <View style={{ flex:1, overflow:"hidden", paddingVertical:5, flexDirection:"row", alignItems:"center"} }>
+      <Text style={{fontWeight:"500", marginRight:15}}>{category}</Text>
+      <Text numberOfLines={1} style={{flex:1, color:"grey", fontSize:13}}>{title}</Text>
+      <Icon name="ios-home" style={{marginLeft:"auto", fontSize:10, color:"red"}}></Icon>
+    </View>
+  ))
+
   render(){
+    const semple=[
+      {
+        category: "서울캠 자유게시판",
+        title: "오랜만에 실로암 영상 보니까 웃기네 웃기네"
+      },
+      {
+        category: "비말게시판",
+        title: "인증 후 이용가능"
+      },
+      {
+        category: "졸업생게시판",
+        title: "이번주 업적"
+      },
+      {
+        category: "서울캠 장터게시판",
+        title: "원룸 300/46 회기역 30초 거리 비싸네요 이런 ㅠㅠ"
+      }
+    ]
     return(
-      <SafeAreaView>
+      <SafeAreaView style={{paddingHorizontal:10}}>
+
         <View style={{flexDirection:"row", marginBottom:15, alignItems:"center"}}>
           <Text style={{fontWeight:"bold", fontSize:20}}>즐겨찾는 게시판</Text>
           <Text style={{marginLeft:"auto", fontWeight:"500", color:"red"}}>더 보기</Text>
         </View>
         
-        <View style={{flexDirection:"row", alignItems:"center"}}>
-          <Text style={{fontWeight:"500", marginRight:10}}>Category</Text>
-          <Text style={{color:"grey"}}>Title</Text>
-          <Icon name="ios-home" style={{marginLeft:"auto", fontSize:10, color:"red"}}></Icon>
-        </View>
+        { this.SampleCardItem(semple) } 
+
       </SafeAreaView>
     )
   }
+}
+
+class HomeTabContentFour extends React.Component {
+  render(){
+    return (
+      <></>
+    );
+  }  
 }
 
 export default class HomeTabPresenter extends React.Component{
@@ -158,7 +191,6 @@ export default class HomeTabPresenter extends React.Component{
           <View style={styles.Card}>
             <HomeTabContentThree/>
           </View>
-        
         </Content>
       </Container>
     );
