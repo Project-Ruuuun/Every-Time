@@ -169,37 +169,65 @@ class HomeTabContentThree extends React.Component {
 }
 
 class HomeTabContentFour extends React.Component {
+  SampleCardItem=data=>{
+    const anonyImage = "https://cdn2.iconfinder.com/data/icons/scenarium-vol-4/128/011_avatar_anonymous_profile_privacy_hacker_mask_hoodie-512.png"
+    console.log(data)
+    return(
+      data.map(({image, id, date, category, title, content, likes, comments})=>{
+      <>
+      <Text>나와라야~</Text>
+      <View style={{flexDirection:"row", alignItems:"center", marginVertical:10}}>
+        <Image source={image === "" ? { url: anonyImage } : {url: image}}
+          style={{width:35, height:35, borderRadius:37.5}}/>          
+        <Text style={{marginLeft:10, fontWeight:"800"}}>{id}}</Text>
+        <Text style={{marginLeft:"auto"}}>{date}?</Text>
+      </View>
+        
+      <View>
+        <Text style={{fontWeight:"700"}}>{title}</Text>
+        <Text style={{marginTop:5}}>{content}</Text>
+      </View>
+        
+      <View style={{flexDirection:"row", alignItems:"center"}}>
+        <Text style={{fontSize:12}}>{category}</Text>
+        <View style={{flexDirection:"row", marginLeft:"auto", alignItems:"center"}}>
+          <Icon name="thumbs-up" type="Feather" style={{fontSize:17, color:"red"}}/>
+          <Text style={{paddingHorizontal:3, color:"red"}}>{likes}</Text>
+          <Icon type="EvilIcons" name="comment" style={{marginLeft:6, fontSize:25, color:"#79b"}}/>
+          <Text style={{paddingHorizontal:3, color:"#79b"}}>{comments}</Text>
+        </View>
+      </View>
+      </>
+    })
+  )}
   render(){
     const anonyImage = "https://cdn2.iconfinder.com/data/icons/scenarium-vol-4/128/011_avatar_anonymous_profile_privacy_hacker_mask_hoodie-512.png"
+    const ice = "https://www.creativefabrica.com/wp-content/uploads/2020/01/05/Ice-Cream-Kawaii-Cute-Illustration-Graphics-1-580x386.jpg"
+    const items = [
+      {
+        image:"",id:"",date:"01/11 16:08",
+        category: "서울캠 자유게시판",
+        title: "이건 진짜 심각한 거 아님?",
+        content: "걍 대놓고 생까겠다는 거네 ㅋㅋㅋㅋㅋㅋ",
+        likes: "32",
+        comments: "27",
+      },
+      {
+        image: ice, id: "아이스크림", date: "01/11 16:08",
+        category:"서울캠 자유게시판",
+        title:"싱글벙글 추장관",
+        content:"아 ㅋㅋㅋ",
+        likes:"29",
+        comments:"27",
+      }
+    ]
     return (
       <SafeAreaView style={{paddingHorizontal:10}}>
-
-        <View style={{flexDirection:"row", alignItems:"center"}}>
+        <View style={{flexDirection:"row", marginBottom:15, alignItems:"center"}}>
           <Text style={{fontWeight:"bold", fontSize:18}}>실시간 인기 글</Text>
         </View>
-        
-        <View style={{flexDirection:"row", alignItems:"center", marginVertical:10}}>
-          <Image source={{ url: anonyImage }}
-            style={{width:35, height:35, borderRadius:37.5}}/>          
-          <Text style={{marginLeft:10, fontWeight:"800"}}>익명</Text>
-          <Text style={{marginLeft:"auto"}}>01/11 16:08</Text>
-        </View>
-        
-        <View>
-          <Text style={{fontWeight:"700"}}>이건 진짜 심각한 거 아님?</Text>
-          <Text style={{marginTop:5}}>걍 대놓고 생까겠다는 거네 ㅋㅋㅋㅋㅋㅋ</Text>
-        </View>
-        
-        <View style={{flexDirection:"row", alignItems:"center"}}>
-          <Text style={{fontSize:12}}>Category</Text>
-          <View style={{flexDirection:"row", marginLeft:"auto", alignItems:"center"}}>
-            <Icon name="thumbs-up" type="Feather" style={{fontSize:17, color:"red"}}/>
-            <Text style={{paddingHorizontal:3, color:"red"}}>32</Text>
-            <Icon type="EvilIcons" name="comment" style={{marginLeft:6, fontSize:25, color:"#79b"}}/>
-            <Text style={{paddingHorizontal:3, color:"#79b"}}>27</Text>
-          </View>
-        </View>
 
+        {this.SampleCardItem(items)}
       </SafeAreaView>
     );
   }  
