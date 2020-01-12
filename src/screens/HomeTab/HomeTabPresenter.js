@@ -169,37 +169,39 @@ class HomeTabContentThree extends React.Component {
 }
 
 class HomeTabContentFour extends React.Component {
-  SampleCardItem=data=>{
+  SampleCardItems=data=>{
     const anonyImage = "https://cdn2.iconfinder.com/data/icons/scenarium-vol-4/128/011_avatar_anonymous_profile_privacy_hacker_mask_hoodie-512.png"
-    console.log(data)
     return(
-      data.map(({image, id, date, category, title, content, likes, comments})=>{
-      <>
-      <Text>나와라야~</Text>
-      <View style={{flexDirection:"row", alignItems:"center", marginVertical:10}}>
-        <Image source={image === "" ? { url: anonyImage } : {url: image}}
-          style={{width:35, height:35, borderRadius:37.5}}/>          
-        <Text style={{marginLeft:10, fontWeight:"800"}}>{id}}</Text>
-        <Text style={{marginLeft:"auto"}}>{date}?</Text>
-      </View>
-        
-      <View>
-        <Text style={{fontWeight:"700"}}>{title}</Text>
-        <Text style={{marginTop:5}}>{content}</Text>
-      </View>
-        
-      <View style={{flexDirection:"row", alignItems:"center"}}>
-        <Text style={{fontSize:12}}>{category}</Text>
-        <View style={{flexDirection:"row", marginLeft:"auto", alignItems:"center"}}>
-          <Icon name="thumbs-up" type="Feather" style={{fontSize:17, color:"red"}}/>
-          <Text style={{paddingHorizontal:3, color:"red"}}>{likes}</Text>
-          <Icon type="EvilIcons" name="comment" style={{marginLeft:6, fontSize:25, color:"#79b"}}/>
-          <Text style={{paddingHorizontal:3, color:"#79b"}}>{comments}</Text>
-        </View>
-      </View>
-      </>
-    })
-  )}
+      data.map( (item) => {
+        console.log(`item.map = ${item}`)
+        return(
+          <>
+          <View style={{flexDirection:"row", alignItems:"center", marginVertical:10}}>
+            <Image source={item.image === "" ? { url: anonyImage } : {url: item.image}}
+              style={{width:35, height:35, borderRadius:37.5}}/>          
+            <Text style={{marginLeft:10, fontWeight:"800"}}>{item.id === "" ? "익명" : item.id}</Text>
+            <Text style={{marginLeft:"auto"}}>{item.date}</Text>
+          </View>
+          
+          <View>
+            <Text style={{fontWeight:"700"}}>{item.title}</Text>
+            <Text style={{marginTop:5}}>{item.content}</Text>
+          </View>
+            
+          <View style={{flexDirection:"row", alignItems:"center", marginBottom:10 }}>
+            <Text style={{fontSize:12}}>{item.category}</Text>
+            <View style={{flexDirection:"row", marginLeft:"auto", alignItems:"center"}}>
+              <Icon name="thumbs-up" type="Feather" style={{fontSize:17, color:"red"}}/>
+              <Text style={{paddingHorizontal:3, color:"red"}}>{item.likes}</Text>
+              <Icon type="EvilIcons" name="comment" style={{marginLeft:6, fontSize:25, color:"#79b"}}/>
+              <Text style={{paddingHorizontal:3, color:"#79b"}}>{item.comments}</Text>
+            </View>
+          </View>
+          </>
+        )}
+      )
+    )
+  }
   render(){
     const anonyImage = "https://cdn2.iconfinder.com/data/icons/scenarium-vol-4/128/011_avatar_anonymous_profile_privacy_hacker_mask_hoodie-512.png"
     const ice = "https://www.creativefabrica.com/wp-content/uploads/2020/01/05/Ice-Cream-Kawaii-Cute-Illustration-Graphics-1-580x386.jpg"
@@ -227,7 +229,7 @@ class HomeTabContentFour extends React.Component {
           <Text style={{fontWeight:"bold", fontSize:18}}>실시간 인기 글</Text>
         </View>
 
-        {this.SampleCardItem(items)}
+        { this.SampleCardItems(items) }
       </SafeAreaView>
     );
   }  
