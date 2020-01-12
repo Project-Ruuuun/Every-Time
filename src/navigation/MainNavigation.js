@@ -52,6 +52,6 @@ export default createAppContainer(createSwitchNavigator(
   },
   {
     //초기 불러올 애 이름
-    initialRouteName: 'AuthLoading'
+    initialRouteName: 'App'
   }
 ));
