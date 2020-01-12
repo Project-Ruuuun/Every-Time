@@ -128,15 +128,15 @@ class HomeTabContentThree extends React.Component {
   render(){
     return(
       <SafeAreaView>
-        <View style={{flexDirection:"row", marginBottom:15}}>
-          <Text>즐겨찾는 게시판</Text>
-          <Text style={{marginLeft:"auto"}}>더보기</Text>
+        <View style={{flexDirection:"row", marginBottom:15, alignItems:"center"}}>
+          <Text style={{fontWeight:"bold", fontSize:20}}>즐겨찾는 게시판</Text>
+          <Text style={{marginLeft:"auto", fontWeight:"500", color:"red"}}>더 보기</Text>
         </View>
         
-        <View>
-          <Text>Category</Text>
-          <Text>Title</Text>
-          <Icon></Icon>
+        <View style={{flexDirection:"row", alignItems:"center"}}>
+          <Text style={{fontWeight:"500", marginRight:10}}>Category</Text>
+          <Text style={{color:"grey"}}>Title</Text>
+          <Icon name="ios-home" style={{marginLeft:"auto", fontSize:10, color:"red"}}></Icon>
         </View>
       </SafeAreaView>
     )
