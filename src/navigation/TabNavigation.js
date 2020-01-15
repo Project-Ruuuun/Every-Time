@@ -16,20 +16,25 @@ class DummyScreen extends React.Component {
 }
 
 const TabNavigator = createBottomTabNavigator({
+
   홈: {
+    path:"Home",
     screen: HomeTab,
     navigationOptions:{
       tabBarIcon: ({focused, tintColor})=>
         <Icon name='ios-home' style={{color:tintColor}}/>
     }
   },
+
   게시판: {
     screen:DummyScreen,
+    path:"Dummy",
     navigationOptions:{
       tabBarIcon:({focused, tintColor})=>
         <Icon name='ios-create' style={{color:tintColor}}/>
     }
   },
+
   시간표: {
     screen:DummyScreen,
     navigationOptions:{
@@ -37,6 +42,7 @@ const TabNavigator = createBottomTabNavigator({
         <Icon name='ios-home' style={{color:tintColor}}/>
     }
   },
+
   알림: {
     screen:DummyScreen,
     navigationOptions:{
@@ -44,6 +50,7 @@ const TabNavigator = createBottomTabNavigator({
         <Icon name='ios-notifications' style={{color:tintColor}}/>
     }
   },
+
 });
 
 export default createAppContainer(TabNavigator);

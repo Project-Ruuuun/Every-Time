@@ -33,6 +33,12 @@ const dataArray = [
   { title: "Third Element", content: "Lorem ipsum dolor sit amet" }
 ];
 class HomeTabTitle extends React.Component {
+
+  constructor(props){
+    super(props)
+    this.state={}
+  }
+
   render(){
     return(
       <>
@@ -45,7 +51,11 @@ class HomeTabTitle extends React.Component {
             <Button transparent>
               <Icon name="ios-search"/>
             </Button>
-            <Button transparent>
+            <Button transparent
+                    onPress={()=>{
+                      this.props.navigation.navigate("Dummy")
+                    }}
+            >
               <Icon name="ios-person" />
             </Button>
           </View>
@@ -155,6 +165,7 @@ class HomeTabContentThree extends React.Component {
       <Text style={{fontWeight:"500", marginRight:15}}>{category}</Text>
       <Text numberOfLines={1} style={{flex:1, color:"grey", fontSize:13}}>{title}</Text>
       <Icon name="ios-home" style={{marginLeft:"auto", fontSize:10, color:"red"}}></Icon>
+
     </View>
   ))
 
@@ -185,6 +196,7 @@ const items = [
     likes: "32",
     comments: "27",
   },
+
   {
     image: ice, id: "아이스크림", date: "01/11 16:08",
     category:"서울캠 자유게시판",
@@ -234,18 +246,25 @@ class HomeTabContentFour extends React.Component {
         </View>
 
         { this.SampleCardItems(items) }
+
       </SafeAreaView>
     );
   }  
 }
 
 export default class HomeTabPresenter extends React.Component{
+  constructor(props){
+    super(props)
+  }
+
   render(){
     return(
       <Container>
         <Content style={{padding:20}}>
           
-          <HomeTabTitle/>
+          <HomeTabTitle
+            navigation={this.props.navigation}
+          />
           
           <HomeTabContentOne/>
 
@@ -269,6 +288,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     backgroundColor: 'white'
   },
+
   Card:{
     borderRadius: 10,
     borderColor: '#bdc3c7',

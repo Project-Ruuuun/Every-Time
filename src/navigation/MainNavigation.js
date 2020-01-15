@@ -7,21 +7,32 @@ import { createStackNavigator } from 'react-navigation-stack'
 import TabNavigation from '../navigation/TabNavigation'
 import LandingPage from '../screens/LandingPage'
 import SignIn from '../screens/SignIn'
-
+import DummyScreen from '../screens/DummyScreen'
+import SearchScreen from '../screens/SearchScreen'
 import AuthLoadingScreen from '../Components/AuthLoadingScreen'
 
 
 const AppStack = createStackNavigator({
+  
   Main: {
     screen: TabNavigation
   },
+  
   LandingPage:{
     screen: LandingPage
   },
+  
   SignIn:{
     screen: SignIn
-  }
+  },
 
+  Search:{
+    screen: SearchScreen
+  },
+
+  Dummy:{
+    screen: DummyScreen
+  }
 
 
 }, {

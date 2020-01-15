@@ -8,7 +8,9 @@ export default class HomeScreen extends React.Component {
   }
   render() {
     return (
-      <HomeTabPresenter/>
+      <HomeTabPresenter
+        navigation={this.props.navigation}
+      />
     );
   }
 }
