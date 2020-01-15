@@ -17,6 +17,9 @@ import SignIn from './SignIn';
 ///routing ver 2
 import {Navigation} from 'react-native-navigation';
 
+import * as Facebook from 'expo-facebook';
+
+
 export default class LandingPage extends Component {
 
 
@@ -54,6 +57,32 @@ export default class LandingPage extends Component {
         this.props.navigation.navigate('Main');
     };
 
+    ////////facebook
+    FacebookLogin = async() => {
+        try {
+            var appid = '1603277879825910';
+            await Facebook.initializeAsync(appid);
+            
+            const {
+              type,
+              token,
+              expires,
+              permissions,
+              declinedPermissions,
+            } = await Facebook.logInWithReadPermissionsAsync(appid, {
+              permissions: ['public_profile'],
+            });
+            if (type === 'success') {
+              // Get the user's name using Facebook's Graph API
+              const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
+              Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
+            } else {
+              // type === 'cancel'
+            }
+          } catch ({ message }) {
+            alert(`Facebook Login Error: ${message}`);
+          }
+    }
     ///////////
 
     static navigationOptions = {
@@ -101,8 +130,11 @@ export default class LandingPage extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.container}>
+                <TouchableOpacity
+                        style={styles.submitButton}
+                        onPress={() => this.FacebookLogin()}>
                     <Text style={styles.submitButtonText}>페이스북 로그인</Text>
-
+                    </TouchableOpacity>
                 </View>
                 </Container>
         );

@@ -12,6 +12,7 @@ import SignIn from '../screens/SignIn'
 import AuthLoadingScreen from '../Components/AuthLoadingScreen'
 
 
+
 const AppStack = createStackNavigator({
   Main: {
     screen: TabNavigation
@@ -46,10 +47,10 @@ const AuthStack = createStackNavigator({
 
 export default createAppContainer(createSwitchNavigator(
   {
-    //AuthLoading: AuthLoadingScreen,
+    AuthLoading: AuthLoadingScreen,
     App: AppStack,
     Auth: AuthStack,
-    AuthLoading: AuthLoadingScreen,
+   // AuthLoading: AuthLoadingScreen,
   },
   {
     //초기 불러올 애 이름
