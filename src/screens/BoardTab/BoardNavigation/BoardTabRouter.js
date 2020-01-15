@@ -4,6 +4,10 @@ import { Text, View } from 'react-native';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs'
 import {createAppContainer } from 'react-navigation'
 import BoardTabTotal from '../Tab/BoardTotal'
+import BoardTabInfo from '../Tab/BoardInfo'
+import BoardTabAD from '../Tab/BoardAD'
+import BoardTabGroup from '../Tab/BoardGroup'
+
 
 const BoardTabNavigator = createMaterialTopTabNavigator({
   전체: {
@@ -11,13 +15,13 @@ const BoardTabNavigator = createMaterialTopTabNavigator({
     initialRouteName : '전체',
   },
   정보: {
-    screen:BoardTabTotal    
+    screen:BoardTabInfo
   },
   홍보: {
-    screen:BoardTabTotal    
+    screen:BoardTabAD    
   },
   단체: {
-    screen:BoardTabTotal    
+    screen:BoardTabGroup
   },
 },
 {
