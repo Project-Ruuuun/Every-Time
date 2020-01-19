@@ -1,42 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  SafeAreaView,
-  Dimensions, Image,
-  ListView,
-} from 'react-native';
+
+import { View, Text, StyleSheet, SafeAreaView,  Image } from 'react-native';
 import { Container } from 'native-base';
 
-import {
-  Header,
-  Left,
-  Body,
-  Right,
-  Icon,
-  Content,
-  Accordion,
-  Button,
-  Title,
-  Card,
-  CardItem,
-} from 'native-base'
-import { ScrollView } from 'react-native-gesture-handler';
+import { Icon, Content, Card } from 'native-base';
 
-import  { width, height } from '../../constants/Layout'
+import { connect } from 'react-redux';
 
 import HomeTabTitle from './HomeTabTitle'
 import HomeTabCards from './HomeTabCards'
 import HomeTabButtons from './HomeTabButtons'
-
-const dataArray = [
-  { title: "First Element", content: "Lorem ipsum dolor sit amet" },
-  { title: "Second Element", content: "Lorem ipsum dolor sit amet" },
-  { title: "Third Element", content: "Lorem ipsum dolor sit amet" }
-];
 
 const sempleOne = [{
     category: "서울캠 자유게시판",
@@ -154,8 +127,38 @@ class HomeTabContentTwo extends React.Component {
   }  
 }
 
-export default class HomeTabPresenter extends React.Component{
-  render(){
+class HomeTabPresenter extends React.Component{
+
+  showHomeTabContents = buttons => buttons.map(
+    (btn, idx) => {
+      console.log(btn.show)
+      if (btn.show === true) {
+        return(
+          <Card key={idx} style={styles.Card}>
+             <HomeTabContentOne/>
+          </Card>
+        )
+      }
+    }
+  )
+
+  // (buttons.map( btn => 
+  //   {
+  //     btn.show === true 
+  //       ? return (
+  //         <Card style={styles.Card}>
+  //           <HomeTabContentOne/>
+  //         </Card>)
+  //       : return (<Card style={styles.Card}>
+  //           <HomeTabContentTwo/>
+  //         </Card>)
+  //   }))
+
+  render() {
+    
+    const { buttons } = this.props
+    console.log(this.props)
+    
     return(
       <Container>
         <Content style={{padding:20}}>
@@ -164,17 +167,22 @@ export default class HomeTabPresenter extends React.Component{
           <HomeTabCards/>
           <HomeTabButtons/>
 
-          <Card style={styles.Card}>
-            <HomeTabContentOne/>
-          </Card>
-          <Card style={styles.Card}>
-            <HomeTabContentTwo/>
-          </Card>
+          {
+            this.showHomeTabContents(buttons)
+          }
+
         </Content>
       </Container>
     );
   }
 }
+
+const mapStateToProps = ({ home }) => ({
+  buttons: home.get('buttons')
+});
+
+export default connect(mapStateToProps)(HomeTabPresenter);
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -191,5 +199,4 @@ const styles = StyleSheet.create({
     marginVertical:5
   }
 });
-
 // export default HomeTabPresenter;

@@ -8,7 +8,7 @@ import TabNavigation from '../navigation/TabNavigation'
 import LandingPage from '../screens/LandingPage'
 import SignIn from '../screens/SignIn'
 
-import AuthLoadingScreen from '../Components/AuthLoadingScreen'
+// import AuthLoadingScreen from '../Components/AuthLoadingScreen'
 
 
 
@@ -19,12 +19,9 @@ const AppStack = createStackNavigator({
   LandingPage:{
     screen: LandingPage
   },
-  SignIn:{
-    screen: SignIn
-  }
-
-
-
+  // SignIn:{
+  //   screen: SignIn
+  // }
 }, {
   initialRouteName: "Main",
   headerMode: 'screen',
@@ -46,13 +43,13 @@ const AuthStack = createStackNavigator({
 
 export default createAppContainer(createSwitchNavigator(
   {
-    AuthLoading: AuthLoadingScreen,
+    // AuthLoading: AuthLoadingScreen,
     App: AppStack,
-    Auth: AuthStack,
+    // Auth: AuthStack,
    // AuthLoading: AuthLoadingScreen,
   },
   {
     //초기 불러올 애 이름
-    initialRouteName: 'Auth'
+    initialRouteName: 'App'
   }
 ));

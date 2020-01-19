@@ -3,45 +3,27 @@ import { StyleSheet } from 'react-native'
 import { AppLoading } from 'expo';
 import { Container, Text ,Root} from 'native-base';
 import * as Font from 'expo-font';
-import { Ionicons } from '@expo/vector-icons';
 import MainNavigation from './src/navigation/MainNavigation'
 import * as Facebook from 'expo-facebook';
 
+import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
-import {createStore,applyMiddleware} from 'redux'
-import allReducers from './src/reducers'
-const store = createStore(allReducers);
+import thunkMiddleware from 'redux-thunk'
+import { createLogger } from 'redux-logger'
 
+import rootReducer from './src/store/modules';
+
+const loggerMiddleware = createLogger();
+const store = createStore(  
+                rootReducer,
+                applyMiddleware(thunkMiddleware,
+                                loggerMiddleware));
 
 export default class RootApp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isReady: false,
-    };
-  }
-
   static navigationOptions ={
       headerShown: false
   }
-  
-  // async componentDidMount() {
-
-  //   //
-  //   await Font.loadAsync({
-  //     Roboto: require('native-base/Fonts/Roboto.ttf'),
-  //     Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
-  //     ...Ionicons.font,
-  //   });
-  //   this.setState({ isReady: true });
-  //   console.log('loading Assets Complete!!!');
-  // }
-
-
-
   render() {
-    const {loaded} = this.state;
-
     return (
           <Root>
             <Provider store={ store }>
